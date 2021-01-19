@@ -1,0 +1,21 @@
+- name: Install flameshot package
+  pacman:
+    name: flameshot
+    state: present
+    update_cache: yes
+
+- name: Create config dir
+  file:
+    path: '/home/{{ user }}/.config/flameshot/'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
+    group: '{{ user }}'
+
+- name: Create config file
+  template:
+    src: flameshot.ini.j2
+    dest: '/home/{{ user }}/.config/flameshot/flameshot.ini'
+    mode: 0644
+    owner: '{{ user }}'
+    group: '{{ user }}'

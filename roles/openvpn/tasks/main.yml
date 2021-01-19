@@ -1,0 +1,13 @@
+- name: Install OpenVPN
+  pacman:
+    name: openvpn
+    state: present
+
+- name: Create DNS update scripts
+  copy:
+    src: "{{ item }}"
+    dest: /etc/openvpn/client/
+    mode: 0755
+  with_items:
+    - up.sh
+    - down.sh

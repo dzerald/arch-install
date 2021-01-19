@@ -1,0 +1,24 @@
+- name: Ensure pacman repos are synchronized
+  pacman:
+    update_cache: yes
+
+- name: Install base packages
+  pacman:
+    name:
+      - aws-cli
+      - curl
+      - dnsutils
+      - exa
+      - git
+      - htop
+      - inetutils
+      - ipcalc
+      - nmap
+      - openssh
+      - rsync
+      - unzip
+      - wget
+      - xclip
+      - xterm
+      - zip
+    state: present

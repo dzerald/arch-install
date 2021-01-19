@@ -1,0 +1,21 @@
+- name: Arch Linux installation
+  hosts: localhost
+  become: yes
+  roles:
+    - { role: base-packages, tags: ['base'] }
+    - { role: xorg, tags: ['xorg'] }
+    - { role: sound, tags: ['sound'] }
+    - { role: bspwm, tags: ['bspwm'] }
+    - { role: sxhkd, tags: ['sxhkd'] }
+    - { role: picom, tags: ['picom'] }
+    - { role: kitty, tags: ['kitty'] }
+    - { role: shell, tags: ['shell'] }
+    - { role: fonts, tags: ['fonts'] }
+    - { role: polybar, tags: ['polybar'] }
+    - { role: rofi, tags: ['rofi'] }
+    - { role: dunst, tags: ['dunst'] }
+    - { role: flameshot, tags: ['flameshot'] }
+    - { role: openvpn, tags: ['openvpn'] }
+    - { role: nvim, tags: ['nvim'] }
+    - { role: virtualization, tags: ['virt'] }
+

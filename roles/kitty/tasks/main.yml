@@ -1,0 +1,29 @@
+- name: Install kitty
+  pacman:
+    name: flameshot
+    state: present
+    update_cache: yes
+
+- name: Create config dir
+  file:
+    path: '/home/{{ user }}/.config/kitty/'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
+    group: '{{ user }}'
+
+- name: Create config file
+  copy:
+    src: kitty.conf
+    dest: '/home/{{ user }}/.config/kitty/'
+    mode: 0644
+    owner: '{{ user }}'
+    group: '{{ user }}'
+
+- name: Create kitty theme
+  copy:
+    src: OneDark.conf
+    dest: '/home/{{ user}}/.config/kitty/'
+    mode: 0644
+    owner: '{{ user }}'
+    group: '{{ user }}'
