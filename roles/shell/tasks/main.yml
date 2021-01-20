@@ -1,0 +1,40 @@
+- name: Install zsh and zsh extensions
+  pacman:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - zsh
+    - zsh-autosuggestions
+    - zsh-syntax-highlighting
+  tags: ['zsh']
+
+- name: Create zshrc file
+  copy:
+    src: zshrc
+    dest: '/home/{{ user }}/.zshrc'
+    mode: 0644
+    owner: '{{ user }}'
+    group: '{{ user }}'
+  tags: ['zsh']
+
+- name: Change shell to zsh
+  user:
+    name: '{{ user }}'
+    shell: /usr/bin/zsh
+  tags: ['zsh']
+
+- name: Install starship prompt
+  command: curl -fsSL https://starship.rs/install.sh | bash
+  become: yes
+  become_user: '{{ user }}'
+  tags: ['starship']
+
+- name: Create starship config file
+  copy:
+    src: starship.toml
+    dest: '/home/{{ user }}/.config/'
+    mode: 0644
+    owner: '{{ user }}'
+    group: '{{ user }}'
+  tags: ['starship']

@@ -1,0 +1,21 @@
+- name: Install dunst
+  pacman:
+    name: dunst
+    state: present
+    update_cache: yes
+
+- name: Create config dir
+  file:
+    path: '/home/{{ user }}/.config/dunst/'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
+    group: '{{ user }}'
+
+- name: Create config file
+  copy:
+    src: dunstrc
+    dest: '/home/{{ user }}/.config/dunst/'
+    mode: 0644
+    owner: '{{ user }}'
+    group: '{{ user }}'

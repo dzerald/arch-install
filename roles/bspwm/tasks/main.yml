@@ -1,12 +1,12 @@
-- name: Install kitty
+- name: Install bspwm
   pacman:
-    name: kitty
+    name: bspwm
     state: present
     update_cache: yes
 
 - name: Create config dir
   file:
-    path: '/home/{{ user }}/.config/kitty/'
+    path: '/home/{{ user }}/.config/bspwm/'
     state: directory
     mode: 0755
     owner: '{{ user }}'
@@ -14,16 +14,16 @@
 
 - name: Create config file
   copy:
-    src: kitty.conf
-    dest: '/home/{{ user }}/.config/kitty/'
+    src: bspwmrc
+    dest: '/home/{{ user }}/.config/bspwm/'
     mode: 0644
     owner: '{{ user }}'
     group: '{{ user }}'
 
-- name: Create kitty theme
+- name: Copy wallpaper
   copy:
-    src: OneDark.conf
-    dest: '/home/{{ user}}/.config/kitty/'
+    src: wallpaper.png
+    dest: '/home/{{ user}}/.config/bspwm/'
     mode: 0644
     owner: '{{ user }}'
     group: '{{ user }}'
