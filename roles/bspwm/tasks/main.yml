@@ -16,7 +16,7 @@
   copy:
     src: bspwmrc
     dest: '/home/{{ user }}/.config/bspwm/'
-    mode: 0644
+    mode: 0755
     owner: '{{ user }}'
     group: '{{ user }}'
 
