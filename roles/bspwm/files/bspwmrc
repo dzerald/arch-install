@@ -4,21 +4,34 @@ killall -q polybar
 
 # Autostart
 sxhkd &
+nm-applet --indicator &
 picom --config "$HOME/.config/picom/picom.conf" &
-feh --no-fehbg --bg-fill "$HOME/.config/bspwm/wallpaper.png"
-polybar -r top &
-polybar -r bottom &
+feh --no-fehbg --bg-fill "$HOME/Pictures/wallpapers/beach-009.jpg"
+$HOME/.config/polybar/scripts/launch_polybar.sh
+xset b off
 
 
-# Monitor
-bspc monitor -d 1 2 3 4 5 6
+# Set monitors
+source $HOME/.config/bspwm/detect_monitors.sh
+if [ -n "$laptop" ] && [ -n "$external_1" ] && [ -n "$external_2" ]; then
+  xrandr --output DP1-1 --mode 1920x1080 --rotate normal --output DP1-3 --mode 1920x1080 --rotate normal --right-of DP1-1 --output eDP1 --mode 1920x1080 --rotate normal --below DP1-1
+  # xrandr --output DP1-1 --mode 1920x1080 --rotate normal --output eDP1 --mode 1920x1080 --rotate normal --below DP1-1
+  bspc monitor DP1-1 -d 1 2 3 4 5 6
+  bspc monitor DP1-3 -d 7
+  bspc monitor eDP1 -d 8
+else
+  bspc monitor -d 1 2 3 4 5 6
+fi
 
 # Settings
 bspc config border width 2
 bspc config window_gap   10
-bspc config top_padding  30
+bspc config top_padding  40
 bspc config gapless_monocle      true
 bspc config borderless_monocle      true
 
 
-bspc config focused_border_color "#F27A81"
+bspc config focused_border_color "#BD99FF"
+
+# Window rules
+bspc rule -a Steam state=floating

@@ -1,0 +1,9 @@
+- name: Install xorg packages
+  pacman:
+    name:
+      - xorg-server
+      - xorg-xinit
+      - xorg-xmodmap
+      - xorg-xrandr
+    state: latest
+    update_cache: yes

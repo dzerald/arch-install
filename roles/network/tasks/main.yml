@@ -1,7 +1,8 @@
 - name: Install OpenVPN
   pacman:
     name: openvpn
-    state: present
+    state: latest
+  tags: ["openvpn"]
 
 - name: Create DNS update scripts
   copy:
@@ -11,3 +12,4 @@
   with_items:
     - up.sh
     - down.sh
+  tags: ["openvpn"]

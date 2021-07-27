@@ -25,7 +25,10 @@
   tags: ['zsh']
 
 - name: Install starship prompt
-  command: curl -fsSL https://starship.rs/install.sh | bash
+  pacman:
+    name: starship
+    state: present
+    update_cache: yes
   become: yes
   become_user: '{{ user }}'
   tags: ['starship']

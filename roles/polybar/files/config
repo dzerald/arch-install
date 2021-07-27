@@ -1,0 +1,239 @@
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[settings]
+throttle-output = 5
+throttle-output-for = 10
+screenchange-reload = true
+
+[colors]
+background = #323F4E
+background-alt = #3D4C5F
+foreground =  #F8F8F2
+
+foreground-alt = ${xrdb:color11}
+foreground-alt-1 = ${xrdb:color10}
+
+shade-1 = #506176
+shade-2 = #4B5B70
+shade-3 = #46566A
+shade-4 = #425164
+shade-5 = #3D4C5F
+
+########
+# Bars #
+########
+
+[bar/top]
+width = 100%
+height = 30
+bottom = false
+line-size = 3
+monitor = ${env:MONITOR:}
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+wm-restack = bspwm
+override-redirect = true
+
+enable-ipc = false
+
+border-top-size = 3
+border-bottom-size = 3
+border-top-color = ${colors.background}
+border-bottom-color = ${colors.background}
+
+padding = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = "Iosevka Custom:size=13;3"
+font-1 = "feather:pixelsize=15;4"
+#font-1 = "JetBrains Mono Nerd Font:size=13:style=Bold;3"
+font-2 = "IcoMoon\-Free:pixelsize=12;4"
+font-3 = "JetBrains Mono Nerd Font:style=Bold:size=19;4"
+#font-4 = "feather:pixelsize=15;4"
+font-4 = "JetBrains Mono Nerd Font:size=13:style=Bold;3"
+
+
+modules-left = round-left bspwm round-right
+modules-right = round-left5 update round-left4 battery round-left3 volume round-left2 time round-left1 
+
+tray-position = right
+tray-background = ${colors.shade-1}
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+###########
+# Modules #
+###########
+
+[module/round-left]
+type = custom/text
+content = 
+content-background = ${colors.background}
+content-foreground = ${colors.background-alt}
+content-font = 4
+
+[module/round-left1]
+type = custom/text
+content = 
+content-background = ${colors.shade-2}
+content-foreground = ${colors.shade-1}
+content-font = 4
+
+[module/round-left2]
+type = custom/text
+content = 
+content-background = ${colors.shade-3}
+content-foreground = ${colors.shade-2}
+content-font = 4
+
+[module/round-left3]
+type = custom/text
+content = 
+content-background = ${colors.shade-4}
+content-foreground = ${colors.shade-3}
+content-font = 4
+
+[module/round-left4]
+type = custom/text
+content = 
+content-background = ${colors.shade-5}
+content-foreground = ${colors.shade-4}
+content-font = 4
+
+[module/round-left5]
+type = custom/text
+content = 
+content-background = ${colors.background}
+content-foreground = ${colors.shade-5}
+content-font = 4
+
+[module/round-right]
+type = custom/text
+content = 
+content-foreground = ${colors.background-alt}
+content-font = 4
+
+[module/bspwm]
+type = internal/bspwm
+
+enable-click = true
+enable-scroll = true
+reverse-scroll = false
+pin-workspaces = true
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-default = " "
+
+format = <label-state> <label-mode>
+
+label-focused = 
+label-focused-padding = 1
+label-focused-foreground = ${colors.foreground-alt}
+label-focused-background = ${colors.background-alt}
+label-focused-font = 3 
+
+label-occupied = 
+label-occupied-padding = 1
+label-occupied-foreground = ${colors.foreground-alt-1}
+label-occupied-background = ${colors.background-alt}
+label-occupied-font = 5
+
+label-urgent = 
+label-urgent-padding = 1
+label-urgent-foreground = ${colors.foreground-alt-1}
+label-urgent-background = ${colors.background-alt}
+label-urgent-font = 5
+
+label-empty = 
+label-empty-padding = 1
+label-empty-foreground = ${xrdb:color8}
+label-empty-background = ${colors.background-alt}
+label-empty-font = 5
+
+[module/battery]
+type = internal/battery
+full-at = 99
+time-format = %H:%M
+battery = BAT0
+adapter = AC
+label-font = 5
+
+format-charging-background = ${colors.shade-4}
+format-charging-foreground = #BD99FF 
+format-charging = <label-charging>
+label-charging = "%{T5}%{T-} %percentage%% "
+
+format-discharging = <label-discharging>
+label-discharging = "%{T5} %{T-}%percentage%% " 
+format-discharging-background = ${colors.shade-4}
+format-discharging-foreground = #BD99FF
+
+format-full = "%{T5} %{T-}100% " 
+format-full-background = ${colors.shade-4}
+format-full-foreground = #BD99FF
+
+################################################################################
+[module/time]
+type = internal/date
+interval = 5
+time = "%H:%M"
+format = <label>
+format-background = ${colors.shade-2}
+format-foreground = #87DFEB
+format-prefix = " "
+format-padding = 1
+label = %time%
+#format-overline = ${colors.shade-2}
+#format-underline = ${colors.shade-2}
+
+################################################################################
+[module/sep]
+type = custom/text
+content = " "
+content-background = ${colors.background}
+content-foreground = ${colors.foreground}
+
+###############################################################################
+
+[module/volume]
+type = internal/pulseaudio
+interval = 5
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = "%percentage%% "
+format-volume-foreground = #92B6F4
+format-volume-background = ${colors.shade-3}
+
+label-muted = 
+label-muted-background = ${colors.shade-3}
+label-muted-foreground = #56687E
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+################################################################################
+
+[module/update]
+type = custom/script
+exec = ~/.config/polybar/scripts/updates.sh
+format-background = ${colors.shade-5}
+format-foreground = #F1FF52
+format-prefix = ""
+interval = 5
+tail = true
+
+################################################################################

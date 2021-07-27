@@ -22,7 +22,7 @@
 
 - name: Create kitty theme
   copy:
-    src: OneDark.conf
+    src: ephemeral.conf
     dest: '/home/{{ user}}/.config/kitty/'
     mode: 0644
     owner: '{{ user }}'

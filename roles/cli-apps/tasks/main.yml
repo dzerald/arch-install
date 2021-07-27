@@ -1,26 +1,30 @@
-- name: Ensure pacman repos are synchronized
-  pacman:
-    update_cache: yes
-
 - name: Install CLI apps
   pacman:
     name:
+      - ansible
       - aws-cli
+      - cronie
       - curl
       - dnsutils
       - exa
+      - fzf
       - git
       - htop
       - inetutils
       - ipcalc
+      - jq
       - nmap
       - openssh
+      - psql
       - python3
       - python-pip
       - rsync
+      - tldr
       - unzip
       - wget
+      - whois
       - xclip
       - xterm
       - zip
-    state: present
+    state: latest
+    update_cache: yes

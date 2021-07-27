@@ -1,10 +1,11 @@
-- name: Arch Linux installation
+- name: Setup Arch Linux on Thinkpad
   hosts: localhost
   become: yes
   roles:
     - { role: aur, tags: ['aur'] }
-    - { role: sway, tags: ['sway'] }
-    - { role: waybar, tags: ['waybar'] }
+    - { role: xorg, tags: ['xorg'] }
+    - { role: bspwm, tags: ['bspwm'] }
+    - { role: sxhkd, tags: ['sxhkd']}
     - { role: sound, tags: ['sound'] }
     - { role: desktop-apps, tags: ['desktop-apps'] }
     - { role: cli-apps, tags: ['cli-apps'] }

@@ -1,23 +1,12 @@
-- name: Install base packages
+- name: Install desktop apps
   pacman:
     name:
-      - aws-cli
-      - curl
-      - dnsutils
-      - exa
-      - git
-      - htop
-      - inetutils
-      - ipcalc
-      - nmap
-      - openssh
-      - python3
-      - python-pip
-      - rsync
-      - unzip
-      - wget
-      - xclip
-      - xterm
-      - zip
+      - dbeaver
+      - firefox
+      - network-manager-applet
+      - nitrogen
+      - thunar
+      - thunderbird
+      - steam
     state: present
     update_cache: yes
