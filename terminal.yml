@@ -1,0 +1,5 @@
+- name: Arch Linux installation
+  hosts: localhost
+  become: yes
+  roles:
+    - { role: cli-tools, tags: ['cli-tools] }

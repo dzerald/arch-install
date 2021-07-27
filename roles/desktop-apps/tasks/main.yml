@@ -1,0 +1,23 @@
+- name: Install base packages
+  pacman:
+    name:
+      - aws-cli
+      - curl
+      - dnsutils
+      - exa
+      - git
+      - htop
+      - inetutils
+      - ipcalc
+      - nmap
+      - openssh
+      - python3
+      - python-pip
+      - rsync
+      - unzip
+      - wget
+      - xclip
+      - xterm
+      - zip
+    state: present
+    update_cache: yes

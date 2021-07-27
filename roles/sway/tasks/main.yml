@@ -1,0 +1,47 @@
+- name: Install bspwm
+  pacman:
+    name:
+      - sway
+      - swaybg
+    state: present
+    update_cache: yes
+
+- name: Create sway directories
+  file:
+    path: '{{ item }}'
+    state: directory
+    mode: 0755
+    owner: '{{ user }}'
+    group: '{{ user }}'
+  with_items:
+    - '/home/{{ user }}/.config/sway/'
+    - '/home/{{ user }}/.config/sway/sway.d'
+
+- name: Create main config file
+  copy:
+    src: config
+    dest: '/home/{{ user }}/.config/sway/'
+    mode: 0755
+    owner: '{{ user }}'
+    group: '{{ user }}'
+
+- name: Create splitted config files
+  copy:
+    src: '{{ item }}'
+    dest: '/home/{{ user }}/.config/sway/sway.d'
+    mode: 0644
+  with_items:
+    - autostart.conf
+    - bar.conf
+    - design.conf
+    - floating.conf
+    - keybindings.conf
+    - workspaces.conf
+
+- name: Copy wallpaper
+  copy:
+    src: wallpaper.png
+    dest: '/home/{{ user}}/.config/sway/'
+    mode: 0644
+    owner: '{{ user }}'
+    group: '{{ user }}'
