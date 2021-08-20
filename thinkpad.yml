@@ -2,6 +2,7 @@
   hosts: localhost
   become: yes
   roles:
+    - { role: network, tags: ['network'] }
     - { role: aur, tags: ['aur'] }
     - { role: xorg, tags: ['xorg'] }
     - { role: bspwm, tags: ['bspwm'] }
@@ -12,7 +13,6 @@
     - { role: sddm, tags: ['sddm' ] }
     - { role: shell, tags: ['shell'] }
     - { role: kitty, tags: ['kitty'] }
-    - { role: openvpn, tags: ['openvpn'] }
     - { role: nvim, tags: ['nvim'] }
     - { role: virtualization, tags: ['virt'] }
 

@@ -1,0 +1,5 @@
+- name: Install AUR module from Ansible Galaxy
+  command: ansible-galaxy install kewlfft.aur
+
+- name: Run AUR setup
+  include_tasks: aur.yml   
